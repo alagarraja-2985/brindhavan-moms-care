@@ -1033,3 +1033,207 @@ p {
         transition:none!important
     }
 }
+
+
+
+/* ===== Brindhavan Moms Care Welcome Animation ===== */
+
+#welcome-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            ellipse at 80% 20%,
+            #dfe8d9 0%,
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #f8f5ec 0%,
+            #fffdf8 50%,
+            #f2f1e6 100%
+        );
+
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+/* Welcome content */
+
+.welcome-content {
+    text-align: center;
+    padding: 24px;
+
+    animation: welcomeReveal 1.5s ease forwards;
+}
+
+/* Floral icon */
+
+.welcome-icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+
+    animation: flowerFloat 2.5s ease-in-out infinite;
+}
+
+/* Brand heading */
+
+.welcome-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 46px);
+
+    font-weight: 600;
+    color: #304c3b;
+
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+
+    margin: 18px 0;
+}
+
+/* Welcome tagline */
+
+.welcome-tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+
+    color: #657267;
+    letter-spacing: 1.2px;
+
+    margin-bottom: 30px;
+}
+
+/* Elegant gold loading spinner */
+
+.welcome-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin: 0 auto 25px;
+}
+
+.welcome-loader span {
+    width: 10px;
+    height: 10px;
+    background: #496a52;
+    border-radius: 50%;
+    animation: pulseDots 1.2s ease-in-out infinite;
+}
+
+.welcome-loader span:nth-child(2) {
+    animation-delay: 0.15s;
+    background: #8da58a;
+}
+
+.welcome-loader span:nth-child(3) {
+    animation-delay: 0.3s;
+    background: #c6a66a;
+}
+
+.welcome-loader::before,
+.welcome-loader::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #496a52;
+    border-radius: 50%;
+    animation: pulseDots 1.2s ease-in-out infinite;
+}
+
+.welcome-loader::after {
+    background: #c6a66a;
+    animation-delay: 0.3s;
+}
+
+/* Footer text */
+
+.welcome-footer {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+
+    color: #496a52;
+    letter-spacing: 1.5px;
+}
+
+/* Smooth transition to homepage */
+
+#welcome-screen.hide-welcome {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Animations */
+
+@keyframes pulseDots {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes welcomeReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flowerFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Mobile responsiveness */
+
+@media (max-width: 680px) {
+    .welcome-content {
+        padding: 20px;
+    }
+
+    .welcome-content h1 {
+        font-size: 30px;
+    }
+
+    .welcome-tagline {
+        font-size: 13px;
+        letter-spacing: 0.5px;
+    }
+
+    .welcome-footer {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    #welcome-screen *,
+    #welcome-screen {
+        animation: none !important;
+        transition: none !important;
+    }
+}

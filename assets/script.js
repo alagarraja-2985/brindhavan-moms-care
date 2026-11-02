@@ -13,6 +13,9 @@
     document.querySelectorAll('[data-en][data-ta]').forEach(el => {
       el.textContent = el.dataset[language];
     });
+    document.querySelectorAll('[data-ph-en]').forEach(el => {
+      el.placeholder = language === 'ta' ? el.dataset.phTa : el.dataset.phEn;
+    });
     if (langButton) langButton.textContent = language === 'en' ? 'தமிழ்' : 'English';
     localStorage.setItem('brindhavan-language', language);
   };
@@ -42,3 +45,21 @@
     window.open(`https://wa.me/919941593460?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
   });
 })();
+
+
+/* ===== Welcome Intro Animation ===== */
+
+window.addEventListener("load", function () {
+    const welcomeScreen = document.getElementById("welcome-screen");
+
+    if (welcomeScreen) {
+        setTimeout(() => {
+            welcomeScreen.classList.add("hide-welcome");
+
+            setTimeout(() => {
+                welcomeScreen.remove();
+            }, 1000);
+
+        }, 2500);
+    }
+});
